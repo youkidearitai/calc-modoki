@@ -53,7 +53,7 @@ start:
     ")"    { return BRACKET_END; }
     [\n\r]   { return TEND; }
 
-    "\000" { return 0; }
+    "\000" { return 0; } /* end of line */
     [ \t]+ { goto start; }
 
 */

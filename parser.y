@@ -6,13 +6,13 @@
 // int yydebug = 1;
 %}
 
-%token TNUM /* YACC宣言部 */
-%token BRACKET /* YACC宣言部 */
-%token BRACKET_END /* YACC宣言部 */
-%token TEND
+%token TNUM         /* [0-9]+ */
+%token BRACKET      /* ( */
+%token BRACKET_END  /* ) */
+%token TEND         /* \n */
 
-%left PLUS MINUS
-%left MULTI PROD
+%left PLUS MINUS /* + - */
+%left MULTI PROD /* * / */
 
 /* 文法規則部 */
 %%
@@ -28,12 +28,12 @@ line: TEND
 ;
 
 exp: TNUM { $$ = $1; }
- | exp PLUS exp { $$ = $1 + $3; }
- | exp MINUS exp { $$ = $1 - $3; }
- | exp MULTI exp { $$ = $1 * $3; }
- | exp PROD exp { $$ = $1 / $3; }
- | MINUS exp { $$ = -$2; }
- | BRACKET exp BRACKET_END { $$ = $2; }
+ | exp PLUS exp { $$ = $1 + $3; }        /* 38 + 38 */
+ | exp MINUS exp { $$ = $1 - $3; }       /* 38 - 38 */
+ | exp MULTI exp { $$ = $1 * $3; }       /* 38 * 38 */
+ | exp PROD exp { $$ = $1 / $3; }        /* 38 / 38 */
+ | MINUS exp { $$ = -$2; }               /* -38 */
+ | BRACKET exp BRACKET_END { $$ = $2; }  /* (38) */
 ;
 
 %%
