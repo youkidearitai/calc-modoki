@@ -7,32 +7,28 @@
 #define YYSTYPE char*
 #define YYMARKER yymarker
 
-char* yyin;
-char* yymarker;
-char yytext[128];
-int yytextcnt;
+char *yyin;
+char *yymarker;
 char *yyold;
 
 void yyinputinit(char *p) {
     yyin = p;
-    yytextcnt = 0;
 }
 
 void yyfilltext() {
     char *p = yyold;
+    char yytext[128] = {'\0'};
+
     int size = yyin - yyold;
     int i;
 
-    yytextcnt = 0;
-
-    if (yytextcnt + size + 1 >= 128) {
+    if (size + 1 >= 128) {
         return;
     }
 
     for (i = 0;i < size; i++) {
-        yytext[yytextcnt++] = *p++;
+        yytext[i] = *p++;
     }
-    yytext[yytextcnt++] = '\0';
 
     yylval = atoi(yytext);
 }
