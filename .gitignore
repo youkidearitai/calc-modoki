@@ -1,0 +1,6 @@
+calc
+tags
+*.o
+lex.re2c.c
+parser.tab.c
+parser.tab.h
