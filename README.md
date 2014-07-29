@@ -3,6 +3,8 @@
 構文解析と字句解析ってなんなのか勉強したくて作りました。
 実用性はないです。Linuxで作成しましたが、他の環境で動作できる保証はありません。
 
+このソースについての記録: <http://tekitoh-memdhoi.info/views/624>
+
 DO NOT PRODUCTION USE
 
 #### 文法例
